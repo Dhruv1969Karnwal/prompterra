@@ -8,6 +8,7 @@ import Modal from "./Modal";
 
 const Nav = () => {
   const { data: session } = useSession();
+  // console.log(session)
 
   const [providers, setProviders] = useState(null);
 
@@ -17,6 +18,7 @@ const Nav = () => {
       setProviders(res);
     })();
   }, []);
+  // console.log(providers)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -38,7 +40,7 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">Promptopia</p>
+        <p className="logo_text">Prompterra</p>
       </Link>
 
       {/* Desktop Navigation */}

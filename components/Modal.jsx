@@ -1,4 +1,5 @@
 // Modal.js
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useRef } from 'react';
 
@@ -22,6 +23,12 @@ const Modal = ({ isOpen, onClose }) => {
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
+
+  const handleCloseAndSignOut = () => {
+    onClose();
+    signOut();
+  };
+
   return (
     <div className="dropdown"  ref={modalRef}>
       <Link href="/profile" className="dropdown_link" onClick={onClose}>
@@ -30,7 +37,7 @@ const Modal = ({ isOpen, onClose }) => {
       <Link href="/create-prompt" className="dropdown_link" onClick={onClose}>
         Create Prompt
       </Link>
-      <button type="button" onClick={onClose} className="mt-5 w-full black_btn">
+      <button type="button" onClick={handleCloseAndSignOut} className="mt-5 w-full black_btn">
         Sign Out
       </button>
     </div>
