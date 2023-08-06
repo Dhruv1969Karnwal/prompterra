@@ -3,7 +3,7 @@ import "@styles/globals.css";
 import Nav from "@components/Nav";
 
 export const metadata = {
-  title: "Promptopia",
+  title: "Prompterra",
   description: "Discover & Share AI Prompts",
 };
 
