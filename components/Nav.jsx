@@ -2,9 +2,20 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
+import Modal from "./Modal";
 
 const Nav = () => {
   const userLoggedIn = true;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleImageClick = () => {
+    setIsModalOpen((prev) => !prev);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -16,7 +27,7 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">Promptopia</p>
+        <p className="logo_text">Prompterra</p>
       </Link>
 
       {/* Desktop Navigation */}
@@ -54,15 +65,15 @@ const Nav = () => {
               src="/assets/images/logo.svg"
               width={37}
               height={37}
-              className="rounded-full"
+              className="rounded-full cursor-pointer"
               alt="profile"
-              onClick={() => setToggleDropdown(!toggleDropdown)}
+              onClick={handleImageClick}
             />
+
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
           </div>
         ) : (
-          <>
-            {/* List down provider for signIn  */}
-          </>
+          <>{/* List down provider for signIn  */}</>
         )}
       </div>
     </nav>
