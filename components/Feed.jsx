@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 const Feed = () => {
-  // Search states
   const [searchText, setSearchText] = useState("");
 
   const handleSearchChange = (e) => {};
