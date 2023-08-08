@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import PromptCard from "./PromptCard";
 
@@ -20,6 +20,17 @@ const PromptCardList = ({ data }) => {
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const fetchPosts = async () => {
+    const response = await fetch("/api/prompt");
+    const data = await response.json();
+
+    setAllPosts(data);
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const handleSearchChange = (e) => {};
 
