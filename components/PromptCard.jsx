@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 import Image from "next/image";
 
-const PromptCard = ({ post }) => {
+const PromptCard = ({ post, handleEdit, handleDelete }) => {
   const {data: session} = useSession()
   const [copied, setCopied] = useState("");
 
@@ -15,14 +15,6 @@ const PromptCard = ({ post }) => {
     navigator.clipboard.writeText(post.prompt);
     setTimeout(() => setCopied(false), 3000);
   };
-
-  const handleEdit = () => {
-
-  }
-
-  const handleDelete = () => {
-
-  }
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
