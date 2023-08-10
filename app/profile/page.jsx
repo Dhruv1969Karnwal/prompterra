@@ -1,12 +1,26 @@
 "use client";
 
-import {  useState } from "react";
+import { useSession } from "next-auth/react";
+import {  useEffect, useState } from "react";
 
 import Profile from "@components/Profile";
 
 const MyProfile = () => {
 
+    const {data: session} = useSession()
+
   const [myPosts, setMyPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch(`/api/users/${session?.user.id}/posts`);
+      const data = await response.json();
+
+      setMyPosts(data);
+    };
+
+    if (session?.user.id) fetchPosts();
+  }, [session?.user.id]);
 
 
 
